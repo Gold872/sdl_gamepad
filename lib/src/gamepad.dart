@@ -114,18 +114,18 @@ class SdlGamepad {
 
   /// Gets the current state of the gamepad and all the buttons that are pressed.
   GamepadState getState() => GamepadState(
-    buttonA: _getButton(sdl.SDL_GAMEPAD_BUTTON_SOUTH),
-    buttonB: _getButton(sdl.SDL_GAMEPAD_BUTTON_EAST),
-    buttonX: _getButton(sdl.SDL_GAMEPAD_BUTTON_WEST),
-    buttonY: _getButton(sdl.SDL_GAMEPAD_BUTTON_NORTH),
-    buttonBack: _getButton(sdl.SDL_GAMEPAD_BUTTON_BACK),
-    buttonStart: _getButton(sdl.SDL_GAMEPAD_BUTTON_START),
-    dpadDown: _getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_DOWN),
-    dpadUp: _getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_UP),
-    dpadLeft: _getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_LEFT),
-    dpadRight: _getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_RIGHT),
-    leftShoulder: _getButton(sdl.SDL_GAMEPAD_BUTTON_LEFT_SHOULDER),
-    rightShoulder: _getButton(sdl.SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER),
+    buttonA: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_SOUTH),
+    buttonB: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_EAST),
+    buttonX: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_WEST),
+    buttonY: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_NORTH),
+    buttonBack: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_BACK),
+    buttonStart: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_START),
+    dpadDown: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_DOWN),
+    dpadUp: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_UP),
+    dpadLeft: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_LEFT),
+    dpadRight: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_RIGHT),
+    leftShoulder: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_LEFT_SHOULDER),
+    rightShoulder: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER),
     leftTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFT_TRIGGER),
     rightTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER),
     leftJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFTX),
@@ -133,8 +133,6 @@ class SdlGamepad {
     rightJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTX),
     rightJoystickY: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTY),
   );
-
-  bool _getButton(int button) => sdlGamepad.getButton(button) == 1;
 
   /// Gets the gamepad ID of the gamepad. See [SdlGamepad.fromGamepadIndex] for details.
   int? get id => sdlGamepad.getId().nullIf(0);

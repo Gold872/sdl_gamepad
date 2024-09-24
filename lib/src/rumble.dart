@@ -40,7 +40,7 @@ extension GamepadRumble on SdlGamepad {
     _getRumbleIntensity(leftIntensity),
     _getRumbleIntensity(rightIntensity),
     duration.inMilliseconds,
-  ) == 0;
+  );
 
   /// Rumbles the triggers at the given intensity.
   ///
@@ -53,7 +53,7 @@ extension GamepadRumble on SdlGamepad {
     _getRumbleIntensity(leftIntensity),
     _getRumbleIntensity(rightIntensity),
     duration.inMilliseconds,
-  ) == 0;
+  );
 
   /// Stops rumbling. Equivalent to calling [rumble] with zero intensity.
   void stopRumble() => rumble(intensity: 0, duration: const Duration(seconds: 1));

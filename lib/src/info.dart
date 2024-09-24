@@ -76,15 +76,9 @@ class GamepadInfo {
   /// The version of the gamepad's firmware, if available.
   final int? firmwareVersion;
 
-  // TODO: Determine how to read these:
-  // - See: https://wiki.libsdl.org/SDL3/SDL_GetGamepadProperties
-  // - the SDL_PROP_GAMEPAD constants translate to SDL_PROP_JOYSTICK
-  // - the joystick constants are strings, not int
-  // - the properties is a uint32, which implies it's a bit field
-  // - how can we intersect a bit field with a string?
   /// The properties of the gamepad, if available.
   ///
-  /// See: https://wiki.libsdl.org/SDL3/SDL_GetGamepadProperties
+  /// Do not use this directly, instead, use `has_` getters below.
   final int? properties;
 
   /// A const constructor.
@@ -102,4 +96,22 @@ class GamepadInfo {
     required this.firmwareVersion,
     required this.properties,
   });
+
+  bool _hasProperty(String name) => properties != null
+    && sdlHasProperty(properties!, name);
+
+  /// Whether the gamepad has an LED with an adjustable brightness
+  bool get hasLedWithBrightness => _hasProperty(SDL_PROP_JOYSTICK_CAP_MONO_LED_BOOLEAN);
+
+  /// Whether the gamepad has an LED with an adjustable color.
+  bool get hasLedWithColor => _hasProperty(SDL_PROP_JOYSTICK_CAP_RGB_LED_BOOLEAN);
+
+  /// Whether the gamepad has LEDs that correspond to the player index.
+  bool get hasPlayerLed => _hasProperty(SDL_PROP_JOYSTICK_CAP_PLAYER_LED_BOOLEAN);
+
+  /// Whether the gamepad has dual rumble control.
+  bool get hasDualRumble => _hasProperty(SDL_PROP_JOYSTICK_CAP_RUMBLE_BOOLEAN);
+
+  /// Whether the gamepad supports rumbling its triggers.
+  bool get hasTriggerRumble => _hasProperty(SDL_PROP_JOYSTICK_CAP_TRIGGER_RUMBLE_BOOLEAN);
 }
