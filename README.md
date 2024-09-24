@@ -1,18 +1,4 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# sdl_gamepads
 
 Read and control gamepads via the [SDL3](https://wiki.libsdl.org/SDL3/FrontPage) backend (thanks to [`package:sdl3`](https://pub.dev/packages/sdl3))
 
@@ -28,9 +14,6 @@ Read and control gamepads via the [SDL3](https://wiki.libsdl.org/SDL3/FrontPage)
 This package requires a compiled dynamically linked binary of SDL3 on your system. That means a `.dll` (Windows), `.dylib` (Mac), or `.so` (Linux). See the page on [building SDL 3.0](https://wiki.libsdl.org/SDL3/Installation) for more details. When [Native Assets](https://github.com/dart-lang/sdk/issues/50565) are made generally available, this requirement will be handled for you.
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
 
 ```dart
 if (!SdlLibrary.init()) {
