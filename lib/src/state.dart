@@ -7,7 +7,7 @@
 /// 0 indicates that neither button is pressed.
 ///
 /// For digital buttons, a normalized value will only ever be -1, 0, or +1. For analog inputs,
-/// including pressure-sensitive triggers, the value will be in the range [-1.0, +1.0].
+/// including pressure-sensitive triggers, the value will be between -1.0, +1.0.
 class GamepadState {
   /// Whether the A button was pressed.
   final bool buttonA;
