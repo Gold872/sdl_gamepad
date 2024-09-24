@@ -143,6 +143,13 @@ class GamepadState {
   /// - A value of +1.0 indicates that the right arrow is pressed
   /// - A value of 0 indicates that neither or both arrows are pressed
   int get normalDpadY => _normalizeButtons(dpadDown, dpadUp);
+
+  /// A normalized reading of the shoulders that is between -1.0 and +1.0.
+  ///
+  /// - A value of -1.0 indicates that the left shoulder is pressed
+  /// - A value of +1.0 indicates that the right shoulder is pressed
+  /// - A value of 0 indicates that neither or both shoulders are pressed
+  int get normalShoulders => _normalizeButtons(leftShoulder, rightShoulder);
 }
 
 int _normalizeButtons(bool negativeButton, bool positiveButton) {
