@@ -37,10 +37,11 @@ extension GamepadRumble on SdlGamepad {
   /// - To rumble the entire gamepad, set each side to the same value or use [rumble]
   /// - To rumble just the triggers, use [rumbleTriggers]
   /// - To stop rumbling, use [stopRumble] or pass `0` as the intensity
-  void rumbleSides(
-          {required Duration duration,
-          double leftIntensity = 1,
-          double rightIntensity = 1}) =>
+  void rumbleSides({
+    required Duration duration,
+    double leftIntensity = 1,
+    double rightIntensity = 1,
+  }) =>
       sdlGamepad.rumble(
         _getRumbleIntensity(leftIntensity),
         _getRumbleIntensity(rightIntensity),
@@ -54,10 +55,11 @@ extension GamepadRumble on SdlGamepad {
   /// This function rumbles *just* the triggers*.
   /// - To rumble the entire gamepad, use [rumble] or use [rumbleSides]
   /// - To stop rumbling, use [stopRumble] or pass `0` as the intensity
-  bool rumbleTriggers(
-          {required Duration duration,
-          double leftIntensity = 1,
-          double rightIntensity = 1}) =>
+  bool rumbleTriggers({
+    required Duration duration,
+    double leftIntensity = 1,
+    double rightIntensity = 1,
+  }) =>
       sdlGamepad.rumbleTriggers(
         _getRumbleIntensity(leftIntensity),
         _getRumbleIntensity(rightIntensity),
