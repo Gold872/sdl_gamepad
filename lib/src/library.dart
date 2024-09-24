@@ -10,7 +10,8 @@ class SdlLibrary {
   static bool isInitialized = false;
 
   /// Initializes the SDL library and starts the event loop.
-  static bool init({Duration eventLoopInterval = const Duration(milliseconds: 100)}) {
+  static bool init(
+      {Duration eventLoopInterval = const Duration(milliseconds: 100)}) {
     if (isInitialized) return true;
     // For hint details, see: https://github.com/libsdl-org/SDL/issues/10576
     sdl.sdlSetHint(sdl.SDL_HINT_JOYSTICK_THREAD, "1");

@@ -1,5 +1,5 @@
 name: sdl_gamepad
-description: A Dart-friendly gamepads API that wraps the sdl3 package
+description: A Dart-friendly, cross-platform gamepads API that wraps SDL3 via the sdl3 package
 version: 1.0.0
 repository: https://github.com/Levi-Lesches/sdl_gamepad
 

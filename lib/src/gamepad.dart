@@ -28,19 +28,18 @@ import "utils.dart";
 class SdlGamepad {
   /// Gets a list of gamepad IDs for all currently connected gamepads.
   static List<int> getConnectedGamepadIds() => using((arena) {
-    final lengthPointer = arena<Int32>();
-    final array = sdl.SdlGamepadEx.gets(lengthPointer);
-    final result = [
-      for (var index = 0; index < lengthPointer.value; index++)
-        array[index],
-    ];
-    sdl.sdlFree(array);
-    return result;
-  });
+        final lengthPointer = arena<Int32>();
+        final array = sdl.SdlGamepadEx.gets(lengthPointer);
+        final result = [
+          for (var index = 0; index < lengthPointer.value; index++)
+            array[index],
+        ];
+        sdl.sdlFree(array);
+        return result;
+      });
 
-  static GamepadType _getType(int type) => type == 0
-    ? GamepadType.unknown
-    : GamepadType.fromValue(type);
+  static GamepadType _getType(int type) =>
+      type == 0 ? GamepadType.unknown : GamepadType.fromValue(type);
 
   /// Gets associated info about the gamepad and its physical configuration.
   ///
@@ -51,19 +50,19 @@ class SdlGamepad {
   /// - [GamepadInfo.properties]
   /// - [GamepadInfo.firmwareVersion]
   static GamepadInfo getInfoForGamepadId(int gamepadId) => GamepadInfo(
-    guid: sdl.sdlGetGamepadGuidForId(gamepadId),
-    name: sdl.sdlGetGamepadNameForId(gamepadId),
-    path: sdl.sdlGetGamepadPathForId(gamepadId),
-    serial: null,
-    steamHandle: null,
-    productId: sdl.sdlGetGamepadProductForId(gamepadId),
-    productVersion: sdl.sdlGetGamepadProductVersionForId(gamepadId),
-    properties: null,
-    realType: _getType(sdl.sdlGetRealGamepadTypeForId(gamepadId)),
-    type: _getType(sdl.sdlGetGamepadTypeForId(gamepadId)),
-    vendor: sdl.sdlGetGamepadVendorForId(gamepadId),
-    firmwareVersion: null,
-  );
+        guid: sdl.sdlGetGamepadGuidForId(gamepadId),
+        name: sdl.sdlGetGamepadNameForId(gamepadId),
+        path: sdl.sdlGetGamepadPathForId(gamepadId),
+        serial: null,
+        steamHandle: null,
+        productId: sdl.sdlGetGamepadProductForId(gamepadId),
+        productVersion: sdl.sdlGetGamepadProductVersionForId(gamepadId),
+        properties: null,
+        realType: _getType(sdl.sdlGetRealGamepadTypeForId(gamepadId)),
+        type: _getType(sdl.sdlGetGamepadTypeForId(gamepadId)),
+        vendor: sdl.sdlGetGamepadVendorForId(gamepadId),
+        firmwareVersion: null,
+      );
 
   /// A pointer to the gamepad object managed by SDL.
   ///
@@ -81,8 +80,8 @@ class SdlGamepad {
   /// what order.
   ///
   /// See also: [SdlGamepad.fromGamepadIndex], which remains constant while the device is connected
-  SdlGamepad.fromPlayerIndex(int index) :
-    sdlGamepad = sdl.SdlGamepadEx.getFromPlayerIndex(index);
+  SdlGamepad.fromPlayerIndex(int index)
+      : sdlGamepad = sdl.SdlGamepadEx.getFromPlayerIndex(index);
 
   /// Opens a gamepad of the given index.
   ///
@@ -95,8 +94,8 @@ class SdlGamepad {
   /// See also:
   /// - [SdlGamepad.fromPlayerIndex], which chooses the n-th gamepad connected to the system
   /// - [Udev rules](https://opensource.com/article/18/11/udev), which can influence the assigned value.
-  SdlGamepad.fromGamepadIndex(int index) :
-    sdlGamepad = sdl.SdlGamepadEx.open(index);
+  SdlGamepad.fromGamepadIndex(int index)
+      : sdlGamepad = sdl.SdlGamepadEx.open(index);
 
   /// Re-uses an already-opened SDL3 gamepad pointer.
   ///
@@ -114,25 +113,27 @@ class SdlGamepad {
 
   /// Gets the current state of the gamepad and all the buttons that are pressed.
   GamepadState getState() => GamepadState(
-    buttonA: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_SOUTH),
-    buttonB: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_EAST),
-    buttonX: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_WEST),
-    buttonY: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_NORTH),
-    buttonBack: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_BACK),
-    buttonStart: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_START),
-    dpadDown: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_DOWN),
-    dpadUp: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_UP),
-    dpadLeft: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_LEFT),
-    dpadRight: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_RIGHT),
-    leftShoulder: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_LEFT_SHOULDER),
-    rightShoulder: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER),
-    leftTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFT_TRIGGER),
-    rightTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER),
-    leftJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFTX),
-    leftJoystickY: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFTY),
-    rightJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTX),
-    rightJoystickY: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTY),
-  );
+        buttonA: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_SOUTH),
+        buttonB: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_EAST),
+        buttonX: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_WEST),
+        buttonY: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_NORTH),
+        buttonBack: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_BACK),
+        buttonStart: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_START),
+        dpadDown: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_DOWN),
+        dpadUp: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_UP),
+        dpadLeft: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_LEFT),
+        dpadRight: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_DPAD_RIGHT),
+        leftShoulder:
+            sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_LEFT_SHOULDER),
+        rightShoulder:
+            sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER),
+        leftTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFT_TRIGGER),
+        rightTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER),
+        leftJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFTX),
+        leftJoystickY: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFTY),
+        rightJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTX),
+        rightJoystickY: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTY),
+      );
 
   /// Gets the gamepad ID of the gamepad. See [SdlGamepad.fromGamepadIndex] for details.
   int? get id => sdlGamepad.getId().nullIf(0);
@@ -144,17 +145,17 @@ class SdlGamepad {
   ///
   /// This returns more data than [getInfoForGamepadId] but requires the gamepad to be connected.
   GamepadInfo getInfo() => GamepadInfo(
-    guid: sdl.SdlGamepadEx.getGuidForId(id!),
-    name: sdlGamepad.getName(),
-    path: sdlGamepad.getPath(),
-    serial: sdlGamepad.getSerial(),
-    steamHandle: sdlGamepad.getSteamHandle().nullIf(0),
-    productId: sdlGamepad.getProduct().nullIf(0),
-    productVersion: sdlGamepad.getProductVersion().nullIf(0),
-    properties: sdlGamepad.getProperties().nullIf(0),
-    realType: _getType(sdlGamepad.getRealType()),
-    type: _getType(sdlGamepad.getType()),
-    vendor: sdlGamepad.getVendor().nullIf(0),
-    firmwareVersion: sdlGamepad.getFirmwareVersion().nullIf(0),
-  );
+        guid: sdl.SdlGamepadEx.getGuidForId(id!),
+        name: sdlGamepad.getName(),
+        path: sdlGamepad.getPath(),
+        serial: sdlGamepad.getSerial(),
+        steamHandle: sdlGamepad.getSteamHandle().nullIf(0),
+        productId: sdlGamepad.getProduct().nullIf(0),
+        productVersion: sdlGamepad.getProductVersion().nullIf(0),
+        properties: sdlGamepad.getProperties().nullIf(0),
+        realType: _getType(sdlGamepad.getRealType()),
+        type: _getType(sdlGamepad.getType()),
+        vendor: sdlGamepad.getVendor().nullIf(0),
+        firmwareVersion: sdlGamepad.getFirmwareVersion().nullIf(0),
+      );
 }

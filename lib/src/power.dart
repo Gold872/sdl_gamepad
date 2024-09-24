@@ -41,7 +41,7 @@ enum GamepadPowerState {
   ///
   /// See: https://wiki.libsdl.org/SDL3/SDL_PowerState
   static GamepadPowerState fromValue(int value) =>
-    values.firstWhereOrNull((state) => state.value == value) ?? error;
+      values.firstWhereOrNull((state) => state.value == value) ?? error;
 }
 
 /// Methods to get power info about a gamepad.
@@ -53,14 +53,14 @@ extension GamepadPower on SdlGamepad {
   /// on what that hardware reports. It's not uncommon for older batteries to lose stored power
   /// much faster than it reports, or completely drain when reporting it has 20 percent left, etc.
   int? get battery => using((arena) {
-    late final batteryPointer = arena<Int32>();
-    sdlGamepad.getPowerInfo(batteryPointer);
-    return batteryPointer.value.nullIf(-1);
-  });
+        late final batteryPointer = arena<Int32>();
+        sdlGamepad.getPowerInfo(batteryPointer);
+        return batteryPointer.value.nullIf(-1);
+      });
 
   /// Gets the current power state of the gamepad.
   GamepadPowerState get powerState => using((arena) {
-    final state = sdlGamepad.getPowerInfo(nullptr);
-    return GamepadPowerState.fromValue(state);
-  });
+        final state = sdlGamepad.getPowerInfo(nullptr);
+        return GamepadPowerState.fromValue(state);
+      });
 }

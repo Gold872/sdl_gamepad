@@ -22,11 +22,12 @@ extension GamepadRumble on SdlGamepad {
   /// - To control each side independently, use [rumbleSides]
   /// - To rumble just the triggers, use [rumbleTriggers]
   /// - To stop rumbling, use [stopRumble] or pass `0` as the intensity
-  void rumble({required Duration duration, double intensity = 1}) => sdlGamepad.rumble(
-    _getRumbleIntensity(intensity),
-    _getRumbleIntensity(intensity),
-    duration.inMilliseconds,
-  );
+  void rumble({required Duration duration, double intensity = 1}) =>
+      sdlGamepad.rumble(
+        _getRumbleIntensity(intensity),
+        _getRumbleIntensity(intensity),
+        duration.inMilliseconds,
+      );
 
   /// Rumbles each side of the gamepad at the given intensity.
   ///
@@ -36,11 +37,15 @@ extension GamepadRumble on SdlGamepad {
   /// - To rumble the entire gamepad, set each side to the same value or use [rumble]
   /// - To rumble just the triggers, use [rumbleTriggers]
   /// - To stop rumbling, use [stopRumble] or pass `0` as the intensity
-  void rumbleSides({required Duration duration, double leftIntensity = 1, double rightIntensity = 1}) => sdlGamepad.rumble(
-    _getRumbleIntensity(leftIntensity),
-    _getRumbleIntensity(rightIntensity),
-    duration.inMilliseconds,
-  );
+  void rumbleSides(
+          {required Duration duration,
+          double leftIntensity = 1,
+          double rightIntensity = 1}) =>
+      sdlGamepad.rumble(
+        _getRumbleIntensity(leftIntensity),
+        _getRumbleIntensity(rightIntensity),
+        duration.inMilliseconds,
+      );
 
   /// Rumbles the triggers at the given intensity.
   ///
@@ -49,12 +54,17 @@ extension GamepadRumble on SdlGamepad {
   /// This function rumbles *just* the triggers*.
   /// - To rumble the entire gamepad, use [rumble] or use [rumbleSides]
   /// - To stop rumbling, use [stopRumble] or pass `0` as the intensity
-  bool rumbleTriggers({required Duration duration, double leftIntensity = 1, double rightIntensity = 1}) => sdlGamepad.rumbleTriggers(
-    _getRumbleIntensity(leftIntensity),
-    _getRumbleIntensity(rightIntensity),
-    duration.inMilliseconds,
-  );
+  bool rumbleTriggers(
+          {required Duration duration,
+          double leftIntensity = 1,
+          double rightIntensity = 1}) =>
+      sdlGamepad.rumbleTriggers(
+        _getRumbleIntensity(leftIntensity),
+        _getRumbleIntensity(rightIntensity),
+        duration.inMilliseconds,
+      );
 
   /// Stops rumbling. Equivalent to calling [rumble] with zero intensity.
-  void stopRumble() => rumble(intensity: 0, duration: const Duration(seconds: 1));
+  void stopRumble() =>
+      rumble(intensity: 0, duration: const Duration(seconds: 1));
 }
