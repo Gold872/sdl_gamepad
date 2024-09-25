@@ -27,7 +27,7 @@ if (!gamepad.isConnected) {
   return;
 }
 
-final state = gamepad.state();
+final state = gamepad.getState();
 print("Is A pressed? ${state.buttonA}");
 
 SdlLibrary.dispose();
