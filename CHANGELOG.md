@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Added `GamepadState.leftJoystickButton` and `GamepadState.rightJoystickButton`
+- Added `GamepadState.getConnectionState()`
+
 ## 1.0.2
 
 - Fixed code typo in the README
