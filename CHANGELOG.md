@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Bumped package:sdl3 0.1.34 -> 0.1.44
+
 ## 1.1.0
 
 - Added `GamepadState.leftJoystickButton` and `GamepadState.rightJoystickButton`
