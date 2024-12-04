@@ -129,8 +129,10 @@ class SdlGamepad {
             sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER),
         leftTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFT_TRIGGER),
         rightTrigger: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER),
+        leftJoystickButton: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_LEFT_STICK),
         leftJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFTX),
         leftJoystickY: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_LEFTY),
+        rightJoystickButton: sdlGamepad.getButton(sdl.SDL_GAMEPAD_BUTTON_RIGHT_STICK),
         rightJoystickX: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTX),
         rightJoystickY: sdlGamepad.getAxis(sdl.SDL_GAMEPAD_AXIS_RIGHTY),
       );

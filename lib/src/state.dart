@@ -27,6 +27,12 @@ class GamepadState {
   /// Whether the Start or Options button was pressed.
   final bool buttonStart;
 
+  /// Whether the left joystick is being pressed in.
+  final bool leftJoystickButton;
+
+  /// Whether the right joystick is being pressed in.
+  final bool rightJoystickButton;
+
   /// The raw value of the left joystick's X axis.
   ///
   /// This value will be between -32768 (left) and 32768 (right), inclusive.
@@ -91,6 +97,8 @@ class GamepadState {
     required this.buttonY,
     required this.buttonBack,
     required this.buttonStart,
+    required this.leftJoystickButton,
+    required this.rightJoystickButton,
     required this.leftJoystickX,
     required this.leftJoystickY,
     required this.rightJoystickX,
